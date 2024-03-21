@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#6E7EDA"
+    android:padding="10dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/note_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/notes"
+        android:textSize="20sp"
+        android:textColor="#dbcc6f"
+        android:textStyle="bold"/>
+
+    <ListView
+        android:id="@+id/note_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/note_title"
+        android:layout_above="@+id/new_note_button"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/new_note_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_a_new_note"
+        android:layout_alignParentBottom="true"
+        android:textColor="#6E7EDA"
+        android:backgroundTint="#dbcc6f"/>
+</RelativeLayout>
