@@ -50,8 +50,7 @@ public class NoteRepository extends SQLiteOpenHelper {
         contentValues.put(TITLE_FIELD, note.getTitle());
         contentValues.put(DESCRIPTION_FIELD, note.getDescription());
         contentValues.put(DELETED_FIELD, note.getDeleted() != null ? getStringFromDate(note.getDeleted()) : null);
-        db.insertWithOnConflict(TABLE_NAME, null, contentValues, SQLiteDatabase.CONFLICT_REPLACE);
-        db.close();
+        db.replace(TABLE_NAME, null, contentValues);
     }
 
     public void getAllNotes() {
@@ -94,7 +93,6 @@ public class NoteRepository extends SQLiteOpenHelper {
         if (date == null) {
             return null;
         }
-
         return dateFormat.format(date);
     }
 

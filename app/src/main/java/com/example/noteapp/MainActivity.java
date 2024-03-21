@@ -6,6 +6,7 @@ import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.noteapp.databinding.ActivityMainBinding;
 import com.example.noteapp.model.Note;
 import com.example.noteapp.view.AddNoteActivity;
 import com.example.noteapp.view.NoteAdapter;
@@ -13,6 +14,7 @@ import com.example.noteapp.viewmodel.NoteViewModel;
 import com.google.android.material.button.MaterialButton;
 
 public class MainActivity extends AppCompatActivity {
+    private ActivityMainBinding activityMainBinding;
     private ListView listView;
     private MaterialButton newNoteBtn;
     private NoteViewModel noteViewModel;
@@ -20,7 +22,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(activityMainBinding.getRoot());
         initWidgets();
         setupViewModel();
         loadFromDBToMemory();
@@ -30,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initWidgets() {
-        listView = findViewById(R.id.note_list_view);
-        newNoteBtn = findViewById(R.id.new_note_button);
+        listView = activityMainBinding.noteListView;
+        newNoteBtn = activityMainBinding.newNoteButton;
     }
 
     private void setupViewModel() {

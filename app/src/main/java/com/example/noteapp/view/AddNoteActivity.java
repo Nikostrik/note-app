@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.noteapp.R;
+import com.example.noteapp.databinding.ActivityAddNoteBinding;
 import com.example.noteapp.model.Note;
 import com.example.noteapp.viewmodel.NoteViewModel;
 import com.google.android.material.button.MaterialButton;
@@ -16,6 +16,7 @@ import com.google.android.material.button.MaterialButton;
 import java.util.Date;
 
 public class AddNoteActivity extends AppCompatActivity {
+    private ActivityAddNoteBinding activityAddNoteBinding;
     private EditText titleEditText;
     private EditText descriptionEditText;
     private Note selectedNote;
@@ -26,7 +27,8 @@ public class AddNoteActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_note);
+        activityAddNoteBinding = ActivityAddNoteBinding.inflate(getLayoutInflater());
+        setContentView(activityAddNoteBinding.getRoot());
         initWidgets();
         setupViewModel();
         checkForEditNote();
@@ -35,10 +37,10 @@ public class AddNoteActivity extends AppCompatActivity {
     }
 
     private void initWidgets() {
-        titleEditText = findViewById(R.id.title_input);
-        descriptionEditText = findViewById(R.id.description_input);
-        saveBth = findViewById(R.id.save_button);
-        deleteBtn = findViewById(R.id.delete_button);
+        titleEditText = activityAddNoteBinding.titleInput;
+        descriptionEditText = activityAddNoteBinding.descriptionInput;
+        saveBth = activityAddNoteBinding.saveButton;
+        deleteBtn = activityAddNoteBinding.deleteButton;
     }
 
     private void checkForEditNote() {
